@@ -61,26 +61,17 @@ public class EnemyMove : MonoBehaviour
     }
 
 	// 플레이어와 충돌하면 플레이어를 제거하고 나도 제거한다.
-	private void OnCollisionEnter(Collision collision)
+
+	private void OnTriggerEnter(Collider collision)
 	{
-		if (collision.gameObject.layer == 6 )
-		{
+        if (collision.gameObject.layer == 6)
+        {
             Destroy(collision.gameObject);
 
             GameManager.gm.SetActiveUI(true);
-           
+
             Destroy(gameObject);
-		}
-
-        //if (collision.gameObject.tag == "Enemy")
-        //{
-        //    Destroy(collision.gameObject);
-        //    // 폭발 이펙트를 실행한다
-        //    GameObject go = Instantiate(explosionPrefab, collision.transform.position, Quaternion.identity);
-        //    ps = go.GetComponent<ParticleSystem>();
-        //    ps.Play();
-        //}
-
+        }
     }
 
 	// 확률 검증
